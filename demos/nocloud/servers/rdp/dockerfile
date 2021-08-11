@@ -1,0 +1,9 @@
+FROM danielguerra/ubuntu-xrdp:latest
+
+# prepare user alpine
+RUN addgroup admin
+RUN adduser   G admin -s /bin/sh -D admin
+RUN echo "admin:AviDemo1!" | /usr/sbin/chpasswd
+RUN echo "admin    ALL=(ALL) ALL" >> /etc/sudoers
+ADD admin /home/admin
+RUN chown -R admin:admin /home/admin
